@@ -32,3 +32,4 @@ Feature: Selenium run test
     When '1' elements exists with 'id:remember_me'
     And the element on index '0' IS NOT selected
     Then I click on the element on index '0'
+    And this text exists 'Jenkins'

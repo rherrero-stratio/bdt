@@ -291,7 +291,7 @@ public class ThenGSpec extends BaseGSpec {
      *
      * @param text
      */
-    @Then("^this text exists:$")
+    @Then("^this text exists '(.+?)'$")
     public void assertSeleniumTextInSource(String text) {
         assertThat(this.commonspec, commonspec.getDriver()).as("Expected text not found at page").contains(text);
     }
