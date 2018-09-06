@@ -86,7 +86,7 @@ public class LoopIncludeTagAspect {
                 lines.set(s, lines.get(s).replaceAll("Scenario", "Scenario Outline"));
                 s++;
                 while (s < lines.size()) {
-                    if ((lines.get(s).toUpperCase().contains("SCENARIO")) || lines.get(s).matches(".*@[^\\{].*")) {
+                    if ((lines.get(s).toUpperCase().contains("SCENARIO")) || lines.get(s).matches("^@")) {
                         break;
                     }
                     s++;
@@ -112,7 +112,7 @@ public class LoopIncludeTagAspect {
                 lines.set(s, lines.get(s).replaceAll("Scenario", "Scenario Outline"));
                 s++;
                 while (s < lines.size()) {
-                    if ((lines.get(s).toUpperCase().contains("SCENARIO")) || lines.get(s).matches(".*@[^\\{].*")) {
+                    if ((lines.get(s).toUpperCase().contains("SCENARIO")) || lines.get(s).matches("^@")) {
                         break;
                     }
                     s++;
