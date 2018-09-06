@@ -131,7 +131,7 @@ public class LoopIncludeTagAspect {
                     lines.remove(s--);
                 } else {
                     lines.remove(s);
-                    while (!lines.get(s).toUpperCase().contains("SCENARIO") && !lines.get(s).matches(".*@[^\\{].*") && !lines.get(s).toUpperCase().contains("/BACKGROUND")) {
+                    while (!lines.get(s).toUpperCase().contains("SCENARIO") && !lines.get(s).matches("^@") && !lines.get(s).toUpperCase().contains("/BACKGROUND")) {
                         lines.remove(s);
                     }
                     if (lines.get(s).toUpperCase().contains("@/BACKGROUND")) {
