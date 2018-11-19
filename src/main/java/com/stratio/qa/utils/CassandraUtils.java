@@ -18,10 +18,16 @@ package com.stratio.qa.utils;
 
 import com.datastax.driver.core.*;
 import com.stratio.qa.exceptions.DBException;
+import io.netty.handler.ssl.SslContextBuilder;
+import io.netty.handler.ssl.SslProvider;
+import org.apache.http.conn.ssl.SSLContextBuilder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import javax.net.ssl.TrustManager;
+import javax.net.ssl.TrustManagerFactory;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -66,13 +72,24 @@ public class CassandraUtils {
     /**
      * Connect to Cassandra host.
      */
-    public void connect() {
-        buildCluster();
-        this.cassandraqueryUtils = new CassandraQueryUtils();
-        this.metadata = this.cluster.getMetadata();
-        LOGGER.debug("Connected to cluster (" + host + "): "
-                + metadata.getClusterName() + "\n");
-        this.session = this.cluster.connect();
+    public void connect(String secured, String crt, String key) {
+        if (secured == null) {
+            buildCluster(secured, crt, key);
+            this.cassandraqueryUtils = new CassandraQueryUtils();
+            this.metadata = this.cluster.getMetadata();
+            LOGGER.debug("Connected to cluster (" + host + "): "
+                    + metadata.getClusterName() + "\n");
+            this.session = this.cluster.connect();
+        } else {
+            buildCluster(secured, crt, key);
+            this.cassandraqueryUtils = new CassandraQueryUtils();
+            this.metadata = this.cluster.getMetadata();
+            LOGGER.debug("Connected to cluster (" + host + "): "
+                    + metadata.getClusterName() + "\n");
+            this.session = this.cluster.connect();
+
+        }
+
     }
 
     /**
@@ -141,10 +158,25 @@ public class CassandraUtils {
     /**
      * Build a Cassandra cluster.
      */
-    public void buildCluster() {
-        this.cluster = Cluster.builder().addContactPoint(this.host).build();
-        this.cluster.getConfiguration().getQueryOptions()
-                .setConsistencyLevel(ConsistencyLevel.ONE);
+    public void buildCluster(String secured, String cert, String key) {
+        if (secured == null) {
+            this.cluster = Cluster.builder().addContactPoint(this.host).build();
+            this.cluster.getConfiguration().getQueryOptions()
+                    .setConsistencyLevel(ConsistencyLevel.ONE);
+        } else {
+            try {
+
+                SslContextBuilder builder = SslContextBuilder.forClient()
+                        .sslProvider(SslProvider.OPENSSL)
+                        .keyManager(new File(cert), new File(key));
+
+                SSLOptions sslOptions = new NettySSLOptions(builder.build());
+                this.cluster = Cluster.builder().addContactPoint(this.host).withSSL(sslOptions).build();
+
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
