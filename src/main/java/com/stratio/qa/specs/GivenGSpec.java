@@ -77,7 +77,7 @@ public class GivenGSpec extends BaseGSpec {
     }
 
     /**
-     * Create a Cassandra Keyspace.
+     * Create a Cassandra Keyspace.sc
      *
      * @param keyspace cassandra keyspace
      */
@@ -92,13 +92,12 @@ public class GivenGSpec extends BaseGSpec {
      * @param clusterType DB type (Cassandra|Mongo|Elasticsearch)
      * @param url         url where is started Cassandra cluster
      */
-    @Given("^I( securely)? connect to '(Cassandra|Mongo|Elasticsearch)' cluster at '(.+)' with user '(.+?)'( and crt '(.+?)' and key '(.+?)' certificates)?$")
-    public void connect(String secured, String clusterType, String url, String user, String foo3, String crt, String key) throws DBException, UnknownHostException {
+    @Given("^I( securely)? connect to '(Cassandra|Mongo|Elasticsearch)' cluster at '(.+)' with user '(.+?)?$")
+    public void connect(String secured, String clusterType, String url, String user) throws DBException, UnknownHostException {
         switch (clusterType) {
             case "Cassandra":
                 commonspec.getCassandraClient().setHost(url);
-//                commonspec.getCassandraClient().buildCluster(secured, crt, key);
-                commonspec.getCassandraClient().connect(secured, crt, key);
+                commonspec.getCassandraClient().connect(secured);
                 break;
             case "Mongo":
                 commonspec.getMongoDBClient().connect();
