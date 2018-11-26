@@ -91,5 +91,5 @@ Feature: Cassandra steps test
     Given I drop a Cassandra keyspace 'opera'
 
 
-#Intbootstrap: mvn clean verify -Dit.test=com.stratio.qa.ATests.CassandraStepsIT -DBOOTSTRAP_IP=10.200.1.52 -DCASSANDRA_HOST=node-0-server.cassandrastratio.mesos -DVAULT_HOST=10.200.1.50 -DVAULT_PORT=8200 -DlogLevel=DEBUG -DMASTERS_LIST=10.200.0.242 -DDCOS_CLI_HOST=dcos-aceptacion -Djavax.net.ssl.trustStore=target/test-classes/cassandrastratio.jks -Djavax.net.ssl.trustStorePassword=REnzRmPYwLSfdUzALTTiCLN6O4c3qAUctmHkCG7M -Djavax.net.ssl.keyStore=target/test-classes/certificadoscassandra/node-0-server.cassandrastratio.jks -Djavax.net.ssl.keyStorePassword=PgqOC9QJFanKddmx0ZXDmQz3thvciPJe8w9xxhi7
+#Intbootstrap: mvn clean verify -Dit.test=com.stratio.qa.ATests.CassandraStepsIT -DBOOTSTRAP_IP=10.200.1.52 -DCASSANDRA_HOST=node-0-server.cassandrastratio.mesos -DVAULT_HOST=10.200.1.50 -DVAULT_PORT=8200 -DlogLevel=DEBUG -DMASTERS_LIST=10.200.0.242 -DDCOS_CLI_HOST=dcos-aceptacion -Djavax.net.ssl.trustStore=target/test-classes/cassandrastratio.jks -Djavax.net.ssl.trustStorePassword=xxx -Djavax.net.ssl.keyStore=target/test-classes/certificadoscassandra/node-0-server.cassandrastratio.jks -Djavax.net.ssl.keyStorePassword=xxx
 

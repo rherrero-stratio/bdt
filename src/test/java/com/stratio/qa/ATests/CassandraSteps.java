@@ -24,7 +24,7 @@ import org.testng.annotations.Test;
 @CucumberOptions(format = "json:target/cucumber.json", features = {
         "src/test/resources/features/cassandraSteps.feature"
 })
-public class CassandraStepsIT extends BaseGTest {
+public class CassandraSteps extends BaseGTest {
 
     @Test
     public void cassandraStepsTest() throws Exception {
