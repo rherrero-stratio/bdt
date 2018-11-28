@@ -77,7 +77,7 @@ public class GivenGSpec extends BaseGSpec {
     }
 
     /**
-     * Create a Cassandra Keyspace.sc
+     * Create a Cassandra Keyspace.
      *
      * @param keyspace cassandra keyspace
      */

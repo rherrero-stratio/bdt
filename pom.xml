@@ -186,9 +186,6 @@
                             <goal>jar</goal>
                         </goals>
                         <phase>package</phase>
-                        <configuration> <!-- add this to disable checking -->
-                            <additionalparam>-Xdoclint:none</additionalparam>
-                        </configuration>
                     </execution>
                     <execution>
                         <id>annotation</id>
@@ -255,14 +252,12 @@
             <groupId>com.datastax.cassandra</groupId>
             <artifactId>cassandra-driver-core</artifactId>
             <version>${cassandra-driver-core.version}</version>
-            <!--
             <exclusions>
                 <exclusion>
                     <artifactId>netty</artifactId>
                     <groupId>io.netty</groupId>
                 </exclusion>
             </exclusions>
-            -->
         </dependency>
         <dependency>
             <groupId>com.google.guava</groupId>
@@ -440,11 +435,6 @@
             <groupId>com.github.everit-org.json-schema</groupId>
             <artifactId>org.everit.json.schema</artifactId>
             <version>1.7.0</version>
-        </dependency>
-        <dependency>
-            <groupId>org.bouncycastle</groupId>
-            <artifactId>bcpkix-jdk15on</artifactId>
-            <version>1.52</version>
         </dependency>
     </dependencies>
     <repositories>
