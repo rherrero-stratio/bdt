@@ -186,6 +186,9 @@
                             <goal>jar</goal>
                         </goals>
                         <phase>package</phase>
+                        <configuration> <!-- add this to disable checking -->
+                            <additionalparam>-Xdoclint:none</additionalparam>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>annotation</id>

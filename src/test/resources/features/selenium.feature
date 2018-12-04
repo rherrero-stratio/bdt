@@ -4,7 +4,7 @@ Feature: Selenium run test
   Scenario: Dummy scenario
     Given My app is running in 'www.google.com:80'
     When I browse to '/'
-    When '1' elements exists with 'id:lst-ib'
+    When '1' elements exists with 'xpath://input[@name="q"]'
     And I click on the element on index '0'
     Then I type 'stratio' on the element on index '0'
     Then I send 'ENTER' on the element on index '0'
