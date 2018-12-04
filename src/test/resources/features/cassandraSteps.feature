@@ -26,7 +26,7 @@ Feature: Cassandra steps test
     And I run 'sshpass -p "stratio" scp root@!{ip-node}:/var/lib/mesos/slave/slaves/!{slave_id}/frameworks/!{framework_id}/executors/!{executor_id}/runs/latest/apache-cassandra-3.0.16/certificates/node-0-server.cassandrastratio.jks target/test-classes/node-0-server.cassandrastratio.jks' locally
 
     #Connect to Cassandra with certificates
-    And I securely connect to 'Cassandra' cluster at '${CASSANDRA_HOST:-node-0-server.cassandrastratio.mesos}' with user 'node-0-server.cassandrastratio'
+    And I securely connect to 'Cassandra' cluster at '${CASSANDRA_HOST:-node-0-server.cassandrastratio.mesos}'
 
   Scenario: Create a keyspace in Cassandra
     Given I create a Cassandra keyspace named 'opera'

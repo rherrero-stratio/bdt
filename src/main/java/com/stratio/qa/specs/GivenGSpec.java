@@ -92,8 +92,8 @@ public class GivenGSpec extends BaseGSpec {
      * @param clusterType DB type (Cassandra|Mongo|Elasticsearch)
      * @param url         url where is started Cassandra cluster
      */
-    @Given("^I( securely)? connect to '(Cassandra|Mongo|Elasticsearch)' cluster at '(.+)' with user '(.+?)?$")
-    public void connect(String secured, String clusterType, String url, String user) throws DBException, UnknownHostException {
+    @Given("^I( securely)? connect to '(Cassandra|Mongo|Elasticsearch)' cluster at '(.+)")
+    public void connect(String secured, String clusterType, String url) throws DBException, UnknownHostException {
         switch (clusterType) {
             case "Cassandra":
                 commonspec.getCassandraClient().setHost(url);
